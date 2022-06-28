@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value = "/v1/parking-spot")
 public class ParkingSpotController implements ParkingSpotDocument {
 
     private static final String CONFLICT_LICENSE_PLATE_CAR = "Conflict: License Plate Car is already in use!";
@@ -39,10 +37,8 @@ public class ParkingSpotController implements ParkingSpotDocument {
         this.parkingSpotService = parkingSpotService;
     }
 
-
     @Override
-    @PostMapping
-    public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
+    public ResponseEntity<Object> saveParkingSpot(final ParkingSpotDto parkingSpotDto) {
         if (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(CONFLICT_LICENSE_PLATE_CAR);
         }

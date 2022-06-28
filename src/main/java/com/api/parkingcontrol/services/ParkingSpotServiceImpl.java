@@ -5,16 +5,15 @@ import com.api.parkingcontrol.repositories.ParkingSpotRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ParkingSpotServiceImpl implements ParkingSpotService {
 
     private final ParkingSpotRepository parkingSpotRepository;
-
-    public ParkingSpotServiceImpl(ParkingSpotRepository parkingSpotRepository) {
-        this.parkingSpotRepository = parkingSpotRepository;
-    }
 
     @Override
     @Transactional
