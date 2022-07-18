@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping(value = "/v1/parkings-spots")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class ParkingSpotController implements ParkingSpotDocument {
 
@@ -39,6 +41,7 @@ public class ParkingSpotController implements ParkingSpotDocument {
     }
 
     @Override
+    @PostMapping
     public ResponseEntity<Object> saveParkingSpot(final ParkingSpotDto parkingSpotDto) {
         if (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(CONFLICT_LICENSE_PLATE_CAR);

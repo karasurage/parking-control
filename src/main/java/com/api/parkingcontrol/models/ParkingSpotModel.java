@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "TB_PARKING_SPOT")
@@ -30,7 +31,8 @@ public class ParkingSpotModel implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Type(type = "pg-uuid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(nullable = false, unique = true, length = 10)
