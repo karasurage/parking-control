@@ -3,16 +3,20 @@ server:
         include-stacktrace: never
 spring:
     datasource:
-        password: ${MYSQL_PASSWORD}
-        url: ${MYSQL_URL}?createDatabaseIfNotExist=true&serverTimezone=UTC
-        username: ${MYSQL_USERNAME}
+#        url: ${MYSQL_URL}?createDatabaseIfNotExist=true&serverTimezone=UTC
+#        username: ${MYSQL_USERNAME}
+#        password: ${MYSQL_PASSWORD}
+        url: ${POSTGRES_URL}
+        username: ${POSTGRES_USERNAME}
+        password: ${POSTGRES_PASSWORD}
     jpa:
         hibernate:
             ddl-auto: update
         open-in-view: false
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.MySQL8Dialect
+#                dialect: org.hibernate.dialect.MySQL8Dialect
+                dialect: org.hibernate.dialect.PostgreSQLDialect
                 jdbc:
                     lab:
                         non-contextual_creation: true

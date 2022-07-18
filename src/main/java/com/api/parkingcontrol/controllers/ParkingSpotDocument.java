@@ -7,6 +7,7 @@ import com.api.parkingcontrol.models.ParkingSpotModel;
 //import io.swagger.annotations.ApiResponse;
 //import io.swagger.annotations.ApiResponses;
 import java.util.List;
+import java.util.UUID;
 import javax.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -46,9 +47,9 @@ public interface ParkingSpotDocument {
 
     ResponseEntity<List<ParkingSpotModel>> getAllParkingSpots();
 
-    ResponseEntity<Object> getOnePartkingSpot(Long id);
+    ResponseEntity<Object> getOnePartkingSpot(UUID id);
 
-    ResponseEntity<Object> deleteParkingSpot(Long id);
+    ResponseEntity<Object> deleteParkingSpot(UUID id);
 
-    ResponseEntity<Object> updateParkingSpot(Long id, ParkingSpotDto parkingSpotDto);
+    ResponseEntity<Object> updateParkingSpot(UUID id, ParkingSpotDto parkingSpotDto);
 }

@@ -4,6 +4,7 @@ import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.repositories.ParkingSpotRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
     }
 
     @Override
-    public Optional<ParkingSpotModel> findById(Long id) {
+    public Optional<ParkingSpotModel> findById(UUID id) {
         return parkingSpotRepository.findById(id);
     }
 

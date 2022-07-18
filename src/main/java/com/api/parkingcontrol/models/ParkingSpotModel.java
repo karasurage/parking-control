@@ -2,6 +2,7 @@ package com.api.parkingcontrol.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +30,8 @@ public class ParkingSpotModel implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID id;
 
     @Column(nullable = false, unique = true, length = 10)
     private String parkingSpotNumber;
